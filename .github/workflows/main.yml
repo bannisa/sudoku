@@ -16,7 +16,7 @@ jobs:
     
     steps:
     - name: Use Node.js {{ matrix,node-version }}
-      uses: actions/setup-node@v18
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Git checkout
