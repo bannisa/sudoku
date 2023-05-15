@@ -125,18 +125,18 @@ const Sudoku = ({ setLogin, username, password }) => {
                         </label>
                     </span>
                     <div id="game">
-                        <BoardRepresentation board={board} removed={boardMoves} onClick={placementHandler} />
+                        <BoardRepresentation board={board} removed={boardMoves} onClick={placementHandler} highlightedValue={selectedValue} />
                     </div>
                     <span className='btrDisplay'>
-                        <button className='setValueBtr' value={1} onClick={() => { setBoardValue(1) }}>1</button>
-                        <button className='setValueBtr' value={2} onClick={() => { setBoardValue(2) }}>2</button>
-                        <button className='setValueBtr' value={3} onClick={() => { setBoardValue(3) }}>3</button>
-                        <button className='setValueBtr' value={4} onClick={() => { setBoardValue(4) }}>4</button>
-                        <button className='setValueBtr' value={5} onClick={() => { setBoardValue(5) }}>5</button>
-                        <button className='setValueBtr' value={6} onClick={() => { setBoardValue(6) }}>6</button>
-                        <button className='setValueBtr' value={7} onClick={() => { setBoardValue(7) }}>7</button>
-                        <button className='setValueBtr' value={8} onClick={() => { setBoardValue(8) }}>8</button>
-                        <button className='setValueBtr' value={9} onClick={() => { setBoardValue(9) }}>9</button>
+                        <button className='setValueBtr' id={`${selectedValue == 1 ? "valueSelected" : ""}`} value={1} onClick={() => setBoardValue(1) }>1</button>
+                        <button className='setValueBtr' id={`${selectedValue == 2 ? "valueSelected" : ""}`} value={2} onClick={() => setBoardValue(2) }>2</button>
+                        <button className='setValueBtr' id={`${selectedValue == 3 ? "valueSelected" : ""}`} value={3} onClick={() => setBoardValue(3) }>3</button>
+                        <button className='setValueBtr' id={`${selectedValue == 4 ? "valueSelected" : ""}`} value={4} onClick={() => setBoardValue(4) }>4</button>
+                        <button className='setValueBtr' id={`${selectedValue == 5 ? "valueSelected" : ""}`} value={5} onClick={() => setBoardValue(5) }>5</button>
+                        <button className='setValueBtr' id={`${selectedValue == 6 ? "valueSelected" : ""}`} value={6} onClick={() => setBoardValue(6) }>6</button>
+                        <button className='setValueBtr' id={`${selectedValue == 7 ? "valueSelected" : ""}`} value={7} onClick={() => setBoardValue(7) }>7</button>
+                        <button className='setValueBtr' id={`${selectedValue == 8 ? "valueSelected" : ""}`} value={8} onClick={() => setBoardValue(8) }>8</button>
+                        <button className='setValueBtr' id={`${selectedValue == 9 ? "valueSelected" : ""}`} value={9} onClick={() => setBoardValue(9) }>9</button>
                     </span>
                 </div>
             </section>

@@ -26,3 +26,11 @@ td.playAbleGrid:hover {
     font-size: large;
     margin-left: 1%;
 }
+.highlighted {
+    background-color: black;
+    color: white;
+}
+#valueSelected {
+    color: white;
+    background-color: black;
+}

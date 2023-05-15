@@ -200,7 +200,7 @@ const isComplete = (moves) => {
                 all indices contained in removed  removed are not displayed and onClick is called for each.
                 Each Number value contained in the board that is not in removed is wrapped in a label tag.
 */
-const BoardRepresentation = ({ board, removed, onClick }) => {
+const BoardRepresentation = ({ board, removed, onClick, highlightedValue}) => {
     return (
         <table>
             <tbody>
@@ -222,7 +222,7 @@ const BoardRepresentation = ({ board, removed, onClick }) => {
                                                                             innerRow.map((innerCol, innerColI) => {
                                                                                 return containsMove(removed, [outerRowI, outerColI, innerRowI, innerColI]) ?
                                                                                     (<td className="gridVal playAbleGrid" key={innerColI} onClick={() => onClick(outerRowI, outerColI, innerRowI, innerColI)}><label>{" "}</label></td>) :
-                                                                                    (<td className="gridVal" key={innerColI}><label>{innerCol}</label></td>)
+                                                                                    (<td className={`gridVal ${innerCol == highlightedValue ? `highlighted` : ``}` } key={innerColI}><label>{innerCol}</label></td>)
 
                                                                             })
                                                                         }
