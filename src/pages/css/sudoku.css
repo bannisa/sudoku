@@ -1,0 +1,28 @@
+td.gridVal {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border: .5px solid black;
+    text-align: center;
+    font-size: x-large;
+}
+td.playAbleGrid:hover {
+    background-color: grey;
+    opacity: 50%;
+}
+.miniGrid {
+    display: inline-flex;
+}
+
+.miniGrid {
+    border: 3px solid black;
+}
+.btrDisplay {
+    display: inline-flex;
+    margin: .5% .5% .5% 2.5%;
+}
+
+.setValueBtr {
+    font-size: large;
+    margin-left: 1%;
+}
