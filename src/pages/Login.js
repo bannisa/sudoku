@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import CreateAccount from "./AccountCreation.js";
 
 
 const Login = ({setLogin,setUser,setPass}) => {
-
+    const OK_STATUS_CODE = 200;
     const [createAccount, setCreateAccount] = useState(sessionStorage.getItem("createAccount") ? 
                                                 sessionStorage.getItem("createAccount") == "true" : false );
 
@@ -12,20 +12,20 @@ const Login = ({setLogin,setUser,setPass}) => {
         setCreateAccount(value);
     };
 
-    const login = () => {
+    const login = async () => {
         const form = document.getElementById("loginForm");
-
         if(form.reportValidity()) {
             const username = document.getElementById("username").value;
             const password = document.getElementById("pass").value;
             console.log(username, password);
+            
             setUser(username);
             setPass(password);
-            setLogin(true);
-            // TODO send HTTP POST request to API and validate login credentials
+            setLogin(true)
+            //TODO add login functionally
         }
         else {
-            // TODO input validation error handling
+
         }
     };
 
@@ -35,7 +35,7 @@ const Login = ({setLogin,setUser,setPass}) => {
         return (
             <div>
                 <div id="header">
-                    //TODO ADD header
+                    
                 </div>
                 <form id="loginForm" onSubmit={login}>
                     <div>

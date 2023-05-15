@@ -4,30 +4,15 @@ import {useState} from 'react';
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("loggedIn") ? 
-                                      sessionStorage.getItem("loggedIn") == "true" : false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [username, setUsername] = useState( sessionStorage.getItem("username") && isLoggedIn ? sessionStorage.getItem("username") : "");
+  const [username, setUsername] = useState("");
 
-  const [password, setPassword] = useState( sessionStorage.getItem("pass") && isLoggedIn ? sessionStorage.getItem("pass") : "");
+  const [password, setPassword] = useState("");
   
-  const setIsLoggedInWithSession = (value) => {
-    sessionStorage.setItem("loggedIn", value);
-    setIsLoggedIn(value);
-  }
 
-  const setUsernameWithSession = (value) => {
-    sessionStorage.setItem("username",value);
-    setUsername(value);
-  }
-  const setPassWithSession = (value) => {
-    sessionStorage.setItem("pass",value);
-    setPassword(value);
-  }
-
-
-  if(isLoggedIn) return (<Sudoku setLogin={setIsLoggedInWithSession} username={username} password={password}/>)
-  else return (<Login setLogin={setIsLoggedInWithSession} setUser={setUsernameWithSession} setPass={setPassWithSession}/>)
+  if(isLoggedIn) return (<Sudoku setLogin={setIsLoggedIn} username={username} password={password}/>)
+  else return (<Login setLogin={setIsLoggedIn} setUser={setUsername} setPass={setPassword}/>)
 
 }
 

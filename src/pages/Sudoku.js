@@ -90,7 +90,6 @@ const Sudoku = ({ setLogin, username, password }) => {
     return (
         <>
             <header>
-                TODO add a banner to the Sudoku game
             </header>
             <nav>
                 <input type="button" value="Logout" onClick={logout} />
@@ -142,7 +141,7 @@ const Sudoku = ({ setLogin, username, password }) => {
             </section>
 
             <aside id="history">
-                TODO add game history
+                TODO add game history and float right
             </aside>
         </>
     )
