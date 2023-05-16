@@ -7,7 +7,6 @@ const CreateAccount = ({createAccount}) => {
             const pass = document.getElementById("pass").value;
             //TODO add account creation here
 
-            console.log(username,pass);
             createAccount(false);
         }
         else {

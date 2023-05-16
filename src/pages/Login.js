@@ -5,7 +5,7 @@ import CreateAccount from "./AccountCreation.js";
 const Login = ({setLogin,setUser,setPass}) => {
     const OK_STATUS_CODE = 200;
     const [createAccount, setCreateAccount] = useState(sessionStorage.getItem("createAccount") ? 
-                                                sessionStorage.getItem("createAccount") == "true" : false );
+                                                sessionStorage.getItem("createAccount") === "true" : false );
 
     const setCreateAccountWithSession = (value) => {
         sessionStorage.setItem("createAccount",value);
@@ -17,8 +17,6 @@ const Login = ({setLogin,setUser,setPass}) => {
         if(form.reportValidity()) {
             const username = document.getElementById("username").value;
             const password = document.getElementById("pass").value;
-            console.log(username, password);
-            
             setUser(username);
             setPass(password);
             setLogin(true)

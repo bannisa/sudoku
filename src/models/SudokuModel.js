@@ -20,7 +20,7 @@ function checkInnerSquare(board, outerRow, outerCol, valToPlace) {
         for (let innerRow = 0; innerRow < board.length; innerRow++)
             if (board.at(outerRow).at(outerCol).at(innerRow))
                 for (let innerCol = 0; innerCol < board.length; innerCol++)
-                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) == valToPlace) return false;
+                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) === valToPlace) return false;
     return true;
 }
 
@@ -35,7 +35,7 @@ function checkRow(board, outerRow, innerRow, valToPlace) {
         if (board.at(outerRow))
             for (let innerCol = 0; innerCol < board.length; innerCol++)
                 if (board.at(outerRow).at(outerCol) && board.at(outerRow).at(outerCol).at(innerRow))
-                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) == valToPlace) return false;
+                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) === valToPlace) return false;
     return true;
 }
 
@@ -49,7 +49,7 @@ function checkColumn(board, outerCol, innerCol, valToPlace) {
         if (board.at(outerRow)) // row is defined
             for (let innerRow = 0; innerRow < board.length; innerRow++) // for each 1D row in 2D mini grids
                 if (board.at(outerRow).at(outerCol) && board.at(outerRow).at(outerCol).at(innerRow)) // if 2D mini grid exists and row exists in mini grid
-                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) == valToPlace) return false // return false if the location has valToPlace existing
+                    if (board.at(outerRow).at(outerCol).at(innerRow).at(innerCol) === valToPlace) return false // return false if the location has valToPlace existing
     return true;
 }
 
@@ -63,16 +63,16 @@ const generatePlayableMoves = (difficulty) => {
     let difficultyVal; // value used to calculate the number of moves to remove 
     const removed = new Set(); // set of moves to return
 
-    if (difficulty == 1) {
+    if (difficulty === 1) {
         difficultyVal = 30; // 15 <= numToRemove < 30
     }
-    else if (difficulty == 2) {
+    else if (difficulty === 2) {
         difficultyVal = 40; // 20 <= numToRemove < 46
     }
-    else if (difficulty == 3) {
+    else if (difficulty === 3) {
         difficultyVal = 50; // 25 <= numToRemove < 62
     }
-    else if (difficulty == 4) {
+    else if (difficulty === 4) {
         difficultyVal = 60; //  35 <= numToRemove < 78
     }
 
@@ -119,7 +119,7 @@ function generateFilledSudokuBoard() {
             board[outerRow][outerCol] = new Array(NUM_ENTIRES); // create new 2D array
             let miniGridAttempts = 0; // reset number of attempts to generate a valid sudoku mini grid
 
-            if (rowAttempts == MAX_ATTEMPTS) { // if we reach MAX_ATTEMPTS then there's most likely no solution
+            if (rowAttempts === MAX_ATTEMPTS) { // if we reach MAX_ATTEMPTS then there's most likely no solution
                 outerRow--;
                 break;
             }
@@ -127,8 +127,8 @@ function generateFilledSudokuBoard() {
             for (let innerRow = 0; innerRow < board.at(outerRow).at(outerCol).length; innerRow++) {
                 board[outerRow][outerCol][innerRow] = new Array(NUM_ENTIRES); // 1D row in mini grid
 
-                if (miniGridAttempts == MAX_ATTEMPTS) {
-                    if (outerCol == 0) { // Previously generated row doesn't have a solution.
+                if (miniGridAttempts === MAX_ATTEMPTS) {
+                    if (outerCol === 0) { // Previously generated row doesn't have a solution.
                         outerRow--;
                         outerCol = board.length - 2;
                     }
@@ -143,17 +143,17 @@ function generateFilledSudokuBoard() {
                     let numAttempts = 0;
                     while (!done) {
                         let valToPlace = Math.floor(Math.random() * RAND_MULT) + 1;
-                        if (attemptedValues.at(valToPlace) != valToPlace && validatePlacement(board, outerRow, outerCol, innerRow, innerCol, valToPlace)) {
+                        if (attemptedValues.at(valToPlace) !== valToPlace && validatePlacement(board, outerRow, outerCol, innerRow, innerCol, valToPlace)) {
                             board[outerRow][outerCol][innerRow][innerCol] = valToPlace;
                             done = true;
                         }
-                        else if (numAttempts == attemptedValues.length - 1) {
+                        else if (numAttempts === attemptedValues.length - 1) {
                             innerRow = 0;
                             innerCol = -1;
                             miniGridAttempts++;
                             break;
                         }
-                        else if (attemptedValues.at(valToPlace) != valToPlace) {
+                        else if (attemptedValues.at(valToPlace) !== valToPlace) {
                             attemptedValues[valToPlace] = valToPlace;
                             numAttempts++;
                         }
@@ -167,7 +167,7 @@ function generateFilledSudokuBoard() {
 
 /*
     args: Set moves containing strings in the from 'A,B,C,D' where A,B,C,D are each Numbers >= 0 && < 3
-            Array loc with length == 4 with Number, where each Number >= 0 && < 3
+            Array loc with length === 4 with Number, where each Number >= 0 && < 3
     return: True if moves contains the string representation of loc
 */
 const containsMove = (moves, loc) => {
@@ -180,7 +180,7 @@ const containsMove = (moves, loc) => {
 */
 const isValidMove = (board, boardMoves, loc, selectedValue) => {
     return containsMove(boardMoves, loc) && // check to see if the move is contained
-        board.at(loc[0]).at(loc[1]).at(loc[2]).at(loc[3]) == selectedValue; // check to see if the selectedValue is valid
+        board.at(loc[0]).at(loc[1]).at(loc[2]).at(loc[3]) === selectedValue; // check to see if the selectedValue is valid
 }
 
 /*
@@ -189,7 +189,7 @@ const isValidMove = (board, boardMoves, loc, selectedValue) => {
                 else false
 */
 const isComplete = (moves) => {
-    return moves.size() == 0;
+    return moves.size() === 0;
 }
 
 /*
@@ -222,7 +222,7 @@ const BoardRepresentation = ({ board, removed, onClick, highlightedValue}) => {
                                                                             innerRow.map((innerCol, innerColI) => {
                                                                                 return containsMove(removed, [outerRowI, outerColI, innerRowI, innerColI]) ?
                                                                                     (<td className="gridVal playAbleGrid" key={innerColI} onClick={() => onClick(outerRowI, outerColI, innerRowI, innerColI)}><label>{" "}</label></td>) :
-                                                                                    (<td className={`gridVal ${innerCol == highlightedValue ? `highlighted` : ``}` } key={innerColI}><label>{innerCol}</label></td>)
+                                                                                    (<td className={`gridVal ${innerCol === highlightedValue ? `highlighted` : ``}` } key={innerColI}><label>{innerCol}</label></td>)
 
                                                                             })
                                                                         }
