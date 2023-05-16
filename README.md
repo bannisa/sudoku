@@ -3,8 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Dependencies
-Javascript version 18.12.0 or greater
-React version 9.2 or greater
+Javascript version 18.12.0 or greater.\
+React version 9.2 or greater.\
 
 
 ## Available Scripts
